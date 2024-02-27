@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link 
+    rel="stylesheet" 
+    type="text/css"
+    href="{% static 'css/snakes/snake-detail.css' %}"
+  />
+{% endblock %}
+
+{% block content %}
+
+<section class="snake-container">
+  <div class="snake-img">
+    <img 
+      src="{% static 'images/bushmaster.png' %}" 
+      alt="An orange snake"
+    >
+  </div>
+  <div class="snake-details">
+    <h1>{{ snake.name }}</h1>
+    {% if snake.age > 0 %}
+      <h2>A {{ snake.age }} year old {{ snake.breed }}</h2>
+    {% else %}
+      A {{ snake.breed }} snakelet.
+    {% endif %}
+    <p>{{ snake.description }}</p>
+  </div>
+</section>
+
+{% endblock %}
