@@ -13,4 +13,3 @@ class Snake(models.Model):
   
   def get_absolute_url(self):
       return reverse('snake-detail', kwargs={'snake_id': self.id})
-  
