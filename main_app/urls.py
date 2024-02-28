@@ -12,5 +12,3 @@ urlpatterns = [
   path('snakes/<int:pk>/update/', views.SnakeUpdate.as_view(), name='snake-update'),
   path('snakes/<int:pk>/delete/', views.SnakeDelete.as_view(), name='snake-delete'),
 ]
-
-# git commit -m 'implement UpdateSnake functionality with CBV, stub up DeleteSnake CBV'
