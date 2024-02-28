@@ -8,4 +8,5 @@ urlpatterns = [
   path('about/', views.about, name='about'),
   path('snakes/', views.snake_index, name='snake-index'),
   path('snakes/<int:snake_id>/', views.snake_detail, name='snake-detail'),
+  path('snakes/create/', views.SnakeCreate.as_view(), name='snake-create'),
 ]
