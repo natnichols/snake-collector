@@ -10,10 +10,11 @@
 <div class="page-header">
   {% if snake %}
     <h1>Edit {{ snake.name }}</h1>
+    <img src="{% static 'images/anaconda.png' %}" alt="A coiled up anaconda"/>
   {% else %}
     <h1>Add a Snake</h1>
+    <img src="{% static 'images/temp-snake-logo.png' %}" alt="A purple snake" />
   {% endif %}
-  <img src="{% static 'images/anaconda.png' %}" alt="A coiled up anaconda"/>
 </div>
 
 <form action="" method="post" class="form-container">

@@ -7,7 +7,7 @@
   <h1>Release Snake?</h1>
   <img src="{% static 'images/skull-snek.png' %}" alt="A spooky snake" />
 </div>
-<h2>Are you sure you want to set {{snake.name}} free?</h2>
+<h2>Are you sure you want to set {{ snake.name }} free?</h2>
 
 <form action="" method="post" class="form">
   {% csrf_token %}
