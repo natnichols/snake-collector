@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Snake
+from .forms import FeedingForm
 
 # views
 def home(request):
@@ -16,7 +17,10 @@ def snake_index(request):
 
 def snake_detail(request, snake_id):
   snake = Snake.objects.get(id=snake_id)
-  return render(request, 'snakes/detail.html', { 'snake': snake })
+  feeding_form = FeedingForm()
+  return render(request, 'snakes/detail.html', {
+    'snake': snake, 'feeding_form': feeding_form
+  })
 
 class SnakeCreate(CreateView):
   model = Snake
