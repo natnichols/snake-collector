@@ -3,9 +3,9 @@ from django.urls import reverse
 from datetime import date
 
 MEALS = (
-  ('B', 'Breakfast'),
-  ('L', 'Lunch'),
-  ('D', 'Dinner'),
+  ('P', 'Pinky'),
+  ('F', 'Fuzzy'),
+  ('H', 'Hopper'),
 )
 
 # Create your models here.
