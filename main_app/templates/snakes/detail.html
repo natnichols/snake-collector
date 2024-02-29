@@ -61,6 +61,7 @@
     </div>
     <h3>Add a Feeding</h3>
     <form 
+      action="{% url 'add-feeding' snake.id %}"
       method="post"
       class="subsection-content"
       autocomplete="off"
