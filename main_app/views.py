@@ -52,3 +52,11 @@ class HideList(ListView):
 
 class HideDetail(DetailView):
   model = Hide
+
+class HideUpdate(UpdateView):
+  model = Hide
+  fields = ['name', 'color']
+
+class HideDelete(DeleteView):
+  model = Hide
+  success_url = '/hides/'

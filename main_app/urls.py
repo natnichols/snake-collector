@@ -15,4 +15,6 @@ urlpatterns = [
   path('hides/create/', views.HideCreate.as_view(), name='hide-create'),
   path('hides/<int:pk>/', views.HideDetail.as_view(), name='hide-detail'),
   path('hides/', views.HideList.as_view(), name='hide-index'),
+  path('hides/<int:pk>/update/', views.HideUpdate.as_view(), name='hide-update'),
+  path('hides/<int:pk>/delete/', views.HideDelete.as_view(), name='hide-delete'),
 ]
