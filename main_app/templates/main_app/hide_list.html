@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/hides/hide-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>All Snake Hides</h1>
+  <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
+  <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
+  <img src="{% static 'images/post.svg' %}" alt="A scratching post" />
+  <img src="{% static 'images/fish.svg' %}" alt="A fishy toy" />
+</section>
+
+<section class="card-container">
+  {% for hide in hide_list %}
+  <div class="card" style="border-color: {{ hide.color }}">
+    <div class="card-bg" style="background-color: {{ hide.color }}"></div>
+    <a href="{% url 'hide-detail' hide.id %}">
+      <div class="card-content">
+        <h2>{{ hide.name }}</h2>
+        <p>A {{ hide.color }} hide</p>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

@@ -1,6 +1,7 @@
 # imports
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from .models import Snake, Hide
 from .forms import FeedingForm
 
@@ -45,3 +46,9 @@ class SnakeDelete(DeleteView):
 class HideCreate(CreateView):
   model = Hide
   fields = '__all__'
+
+class HideList(ListView):
+  model = Hide
+
+class HideDetail(DetailView):
+  model = Hide
