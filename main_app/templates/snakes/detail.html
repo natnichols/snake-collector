@@ -71,19 +71,25 @@
       <button type="submit" class="btn submit">Add Feeding</button>
     </form>
     <h3>Past Feedings</h3>
-    <table>
-      <thead>
-        <tr><th>Date</th><th>Meal</th></tr>
-      </thead>
-      <tbody>
-        {% for feeding in snake.feeding_set.all %}
-        <tr>
-          <td>{{feeding.date}}</td>
-          <td>{{feeding.get_meal_display}}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    {% if snake.feeding_set.all.count %}
+      <table>
+        <thead>
+          <tr><th>Date</th><th>Meal</th></tr>
+        </thead>
+        <tbody>
+          {% for feeding in snake.feeding_set.all %}
+          <tr>
+            <td>{{feeding.date}}</td>
+            <td>{{feeding.get_meal_display}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="subsection-content">
+        <p>{{snake.name}} has never been fed 😔</p>
+      </div>
+    {% endif %}
   </section>
 </div>
 
