@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/hides/hide-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+  
+<div class="card" style="border-color: {{ hide.color }}">
+  <div class="card-bg" style="background-color: {{ hide.color }}"></div>
+  <div class="card-content">
+    <h2>{{ hide.name }}</h2>
+    <p>A {{ hide.color }} hide</p>
+  </div>
+</div>
+<a href="{% url 'hide-update' hide.id %}" class="btn warn">Edit</a>
+<a href="{% url 'hide-delete' hide.id %}" class="btn danger">Delete</a>
+
+{% endblock %}
