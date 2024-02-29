@@ -1,7 +1,7 @@
 # imports
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Snake
+from .models import Snake, Hide
 from .forms import FeedingForm
 
 # views
@@ -41,3 +41,7 @@ class SnakeUpdate(UpdateView):
 class SnakeDelete(DeleteView):
   model = Snake
   success_url = '/snakes/'
+
+class HideCreate(CreateView):
+  model = Hide
+  fields = '__all__'
