@@ -33,7 +33,7 @@ def add_feeding(request, snake_id):
 
 class SnakeCreate(CreateView):
   model = Snake
-  fields = '__all__'
+  fields = ['name', 'breed', 'description', 'age']
 
 class SnakeUpdate(UpdateView):
   model = Snake
