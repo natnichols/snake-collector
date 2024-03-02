@@ -96,6 +96,36 @@
       </div>
     {% endif %}
   </section>
+  <section class="hides">
+    <div class="subsection-title">
+      <h2>Hides</h2>
+      <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
+      <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
+      <img src="{% static 'images/fish.svg' %}" alt="A fishy toy" />
+    </div>
+    <h3>{{ snake.name }}'s Hides</h3>
+    <div class="subsection-content">
+      {% if snake.hides.count %}
+        {% for hide in snake.hides.all %}
+          <div class="hide-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ hide.color }}"
+            ></div>
+            <a href="{% url 'hide-detail' hide.id %}">
+              <p>A {{ hide.color }} {{ hide.name }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-hides">{{ snake.name }} doesn't have any hides 😔</p>
+      {% endif %}
+    </div>
+    <h3>Available Hides</h3>
+    <div class="subsection-content">
+
+    </div>
+  </section>
 </div>
 
 {% endblock %}
