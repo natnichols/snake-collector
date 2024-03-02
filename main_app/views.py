@@ -19,8 +19,9 @@ def snake_index(request):
 def snake_detail(request, snake_id):
   snake = Snake.objects.get(id=snake_id)
   feeding_form = FeedingForm()
+  hides_snake_doesnt_have = Hide.objects.exclude(id__in = snake.hides.all().values_list('id'))
   return render(request, 'snakes/detail.html', {
-    'snake': snake, 'feeding_form': feeding_form
+    'snake': snake, 'feeding_form': feeding_form, 'hides': hides_snake_doesnt_have
   })
 
 def add_feeding(request, snake_id):

@@ -123,7 +123,27 @@
     </div>
     <h3>Available Hides</h3>
     <div class="subsection-content">
-
+      {% if hides.count %}
+        {% for hide in hides.all %}
+          <div class="hide-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ hide.color }}"
+            ></div>
+            <a href="{% url 'hide-detail' hide.id %}">
+              <p>A {{ hide.color }} {{ hide.name }}</p>
+            </a>
+            <form action="" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn submit">Give hide</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+          <p class="all-hides">
+            {{ snake.name }} already has all the available hides 🥳
+          </p>
+      {% endif %}
     </div>
   </section>
 </div>
