@@ -32,6 +32,10 @@ def add_feeding(request, snake_id):
     new_feeding.save()
   return redirect('snake-detail', snake_id=snake_id)
 
+def assoc_hide(request, snake_id, hide_id):
+  Snake.objects.get(id=snake_id).hides.add(hide_id)
+  return redirect('snake-detail', snake_id=snake_id)
+
 class SnakeCreate(CreateView):
   model = Snake
   fields = ['name', 'breed', 'description', 'age']

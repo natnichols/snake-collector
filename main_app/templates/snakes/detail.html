@@ -133,7 +133,7 @@
             <a href="{% url 'hide-detail' hide.id %}">
               <p>A {{ hide.color }} {{ hide.name }}</p>
             </a>
-            <form action="" method="post">
+            <form action="{% url 'assoc-hide' snake.id hide.id %}" method="post">
               {% csrf_token %}
               <button type="submit" class="btn submit">Give hide</button>
             </form>
