@@ -12,6 +12,7 @@ urlpatterns = [
   path('snakes/<int:pk>/update/', views.SnakeUpdate.as_view(), name='snake-update'),
   path('snakes/<int:pk>/delete/', views.SnakeDelete.as_view(), name='snake-delete'),
   path('snakes/<int:snake_id>/add-feeding/', views.add_feeding, name='add-feeding'),
+  path('snakes/<int:snake_id>/add-photo/', views.add_photo, name='add-photo'),
   path('snakes/<int:snake_id>/assoc-hide/<int:hide_id>/', views.assoc_hide, name='assoc-hide'),
   path('hides/create/', views.HideCreate.as_view(), name='hide-create'),
   path('hides/<int:pk>/', views.HideDetail.as_view(), name='hide-detail'),

@@ -7,8 +7,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Snake, Hide
+from .models import Snake, Hide, Photo
 from .forms import FeedingForm
+import uuid
+import boto3
+
+S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
+BUCKET = 'nn-snake-collector'
 
 # views
 def about(request):
@@ -41,6 +46,23 @@ def snake_detail(request, snake_id):
   return render(request, 'snakes/detail.html', {
     'snake': snake, 'feeding_form': feeding_form, 'hides': hides_snake_doesnt_have
   })
+
+def add_photo(request, snake_id):
+  photo_file = request.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    key = uuid.uuid4().hex + photo_file.name[photo_file.name.rfind('.'):]
+    try:
+      s3.upload_fileobj(photo_file, BUCKET, key)
+      url = f"{S3_BASE_URL}{BUCKET}/{key}"
+      photo = Photo(url=url, snake_id=snake_id)
+      snake_photo = Photo.objects.filter(snake_id=snake_id)
+      if snake_photo.first():
+        snake_photo.first().delete()
+      photo.save()
+    except Exception as err:
+      print('An error occured uploading file to S3: %s' % err)
+  return redirect('snake-detail', snake_id=snake_id)
 
 @login_required
 def add_feeding(request, snake_id):
