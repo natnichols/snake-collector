@@ -18,4 +18,5 @@ urlpatterns = [
   path('hides/', views.HideList.as_view(), name='hide-index'),
   path('hides/<int:pk>/update/', views.HideUpdate.as_view(), name='hide-update'),
   path('hides/<int:pk>/delete/', views.HideDelete.as_view(), name='hide-delete'),
+  path('accounts/signup/', views.signup, name='signup'),
 ]
