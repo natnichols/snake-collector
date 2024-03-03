@@ -6,6 +6,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Snake, Hide
 from .forms import FeedingForm
 
@@ -58,7 +59,7 @@ def assoc_hide(request, snake_id, hide_id):
 class Home(LoginView):
   template_name = 'home.html'
 
-class SnakeCreate(CreateView):
+class SnakeCreate(LoginRequiredMixin, CreateView):
   model = Snake
   fields = ['name', 'breed', 'description', 'age']
 
@@ -66,28 +67,28 @@ class SnakeCreate(CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
-class SnakeUpdate(UpdateView):
+class SnakeUpdate(LoginRequiredMixin, UpdateView):
   model = Snake
   fields = ['breed', 'description', 'age']
 
-class SnakeDelete(DeleteView):
+class SnakeDelete(LoginRequiredMixin, DeleteView):
   model = Snake
   success_url = '/snakes/'
 
-class HideCreate(CreateView):
+class HideCreate(LoginRequiredMixin, CreateView):
   model = Hide
   fields = '__all__'
 
-class HideList(ListView):
+class HideList(LoginRequiredMixin, ListView):
   model = Hide
 
-class HideDetail(DetailView):
+class HideDetail(LoginRequiredMixin, DetailView):
   model = Hide
 
-class HideUpdate(UpdateView):
+class HideUpdate(LoginRequiredMixin, UpdateView):
   model = Hide
   fields = ['name', 'color']
 
-class HideDelete(DeleteView):
+class HideDelete(LoginRequiredMixin, DeleteView):
   model = Hide
   success_url = '/hides/'
