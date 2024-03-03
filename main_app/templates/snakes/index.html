@@ -25,10 +25,18 @@
       <a href="{% url 'snake-detail' snake.id %}">
         <div class="card-content">
           <div class="card-img-container">
-            <img 
-              src="{% static 'images/green-bubble-rattler.png' %}" 
-              alt="A brown snake"
-            >
+            {% if snake.photo.url %}
+              <img 
+                src="{{snake.photo.url}}" 
+                alt="A photo of {{snake.name}}" 
+                class="usr-img"
+              >
+            {% else %}
+              <img 
+                src="{% static 'images/green-bubble-rattler.png' %}" 
+                alt="A brown snake"
+              >
+            {% endif %}
           </div>
           <h2 class="card-title">{{ snake.name }}</h2>
           {% if snake.age > 0 %}
