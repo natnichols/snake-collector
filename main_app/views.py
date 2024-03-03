@@ -27,7 +27,7 @@ def signup(request):
   return render(request, 'signup.html', context)
 
 def snake_index(request):
-  snakes = Snake.objects.all()
+  snakes = Snake.objects.filter(user=request.user)
   return render(request, 'snakes/index.html', { 'snakes': snakes })
 
 def snake_detail(request, snake_id):
