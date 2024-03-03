@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 from .models import Snake, Hide
 from .forms import FeedingForm
 
@@ -26,6 +27,7 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'signup.html', context)
 
+@login_required
 def snake_index(request):
   snakes = Snake.objects.filter(user=request.user)
   return render(request, 'snakes/index.html', { 'snakes': snakes })
