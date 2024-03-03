@@ -54,7 +54,7 @@ class Feeding(models.Model):
 
 class Photo(models.Model):
   url = models.CharField(max_length=250)
-  cat = models.OneToOneField(cat, on_delete=models.CASCADE)
+  snake = models.OneToOneField(Snake, on_delete=models.CASCADE)
 
   def __str__(self):
     return f"Photo for snake_id: {self.snake_id} @{self.url}"
