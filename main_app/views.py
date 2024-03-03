@@ -2,13 +2,11 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.views import LoginView
 from .models import Snake, Hide
 from .forms import FeedingForm
 
 # views
-def home(request):
-  return render(request, 'home.html')
-
 def about(request):
   return render(request, 'about.html')
 
@@ -35,6 +33,9 @@ def add_feeding(request, snake_id):
 def assoc_hide(request, snake_id, hide_id):
   Snake.objects.get(id=snake_id).hides.add(hide_id)
   return redirect('snake-detail', snake_id=snake_id)
+
+class Home(LoginView):
+  template_name = 'home.html'
 
 class SnakeCreate(CreateView):
   model = Snake
