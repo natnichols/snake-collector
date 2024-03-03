@@ -41,6 +41,10 @@ class SnakeCreate(CreateView):
   model = Snake
   fields = ['name', 'breed', 'description', 'age']
 
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
 class SnakeUpdate(UpdateView):
   model = Snake
   fields = ['breed', 'description', 'age']
