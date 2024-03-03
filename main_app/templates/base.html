@@ -29,11 +29,17 @@
     </div>
     <nav>
       <ul>
-        <li><a href="{% url 'snake-index' %}">All Snakes 🐍</a></li>
-        <li><a href="{% url 'hide-index' %}">All Hides 🛖</a></li>
-        <li><a href="{% url 'snake-create' %}">✨Add a Snake🐍</a></li>
-        <li><a href="{% url 'hide-create' %}">✨Add a Hide🛖</a></li>
-        <li><a href="{% url 'about' %}">About 🐍</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'snake-index' %}">All Snakes 🐍</a></li>
+          <li><a href="{% url 'hide-index' %}">All Hides 🛖</a></li>
+          <li><a href="{% url 'snake-create' %}">✨Add a Snake🐍</a></li>
+          <li><a href="{% url 'hide-create' %}">✨Add a Hide🛖</a></li>
+          <li><a href="{% url 'about' %}">About 🐍</a></li>
+          <li><a href="{% url 'logout' %}">Log out 👋</a></li>
+          {% else %}
+          <li><a href="{% url 'about' %}">About 🐍</a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>
