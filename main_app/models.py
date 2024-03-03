@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 from datetime import date
 
 MEALS = (
@@ -25,6 +26,7 @@ class Snake(models.Model):
   description = models.TextField(max_length=250)
   age = models.IntegerField()
   hides = models.ManyToManyField(Hide)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.name
