@@ -32,6 +32,7 @@ def snake_index(request):
   snakes = Snake.objects.filter(user=request.user)
   return render(request, 'snakes/index.html', { 'snakes': snakes })
 
+@login_required
 def snake_detail(request, snake_id):
   snake = Snake.objects.get(id=snake_id)
   feeding_form = FeedingForm()
@@ -40,6 +41,7 @@ def snake_detail(request, snake_id):
     'snake': snake, 'feeding_form': feeding_form, 'hides': hides_snake_doesnt_have
   })
 
+@login_required
 def add_feeding(request, snake_id):
   form = FeedingForm(request.POST)
   if form.is_valid():
@@ -48,6 +50,7 @@ def add_feeding(request, snake_id):
     new_feeding.save()
   return redirect('snake-detail', snake_id=snake_id)
 
+@login_required
 def assoc_hide(request, snake_id, hide_id):
   Snake.objects.get(id=snake_id).hides.add(hide_id)
   return redirect('snake-detail', snake_id=snake_id)
