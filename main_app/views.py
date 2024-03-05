@@ -47,6 +47,7 @@ def snake_detail(request, snake_id):
     'snake': snake, 'feeding_form': feeding_form, 'hides': hides_snake_doesnt_have
   })
 
+@login_required
 def add_photo(request, snake_id):
   photo_file = request.FILES.get('photo-file', None)
   if photo_file:
