@@ -97,6 +97,9 @@ nav li {
   margin: auto;
   padding: 10px 20px 0;
   max-width: 500px;
+  display: flex;
+  justify-content: center;
+  /* flex-wrap: wrap; */
 }
 
 .page-header {
@@ -197,7 +200,9 @@ nav li {
   }
 
   .header-logo-container {
-    width: 213px;
+    display: flex;
+    height: 100px;
+    width: 256px;
   }
 
   .page-header h1 {
@@ -246,13 +251,18 @@ nav li {
 
   nav {
     margin-left: auto;
+    height: 70px;
   }
 
   .header-logo-container {
     /* visual fix to help align logo */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     padding-top: 6px;
-    width: 256px;
-    height: 35px;
+    padding-bottom: 6px;
+    width: 275px;
+    height: 100px;
   }
 
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {

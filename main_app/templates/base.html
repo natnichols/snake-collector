@@ -18,15 +18,15 @@
 </head>
 <body>
   <header>
-    <div class="header-logo-container">
-      <a href="{% url 'home' %}">
+    <a href="{% url 'home' %}">
+        <div class="header-logo-container">
         <img 
           src="{% static 'images/vine-snake.png' %}" 
           alt="snake on a vine" 
         />
-      </a>
-      <h1>Snake Collector</h1>
-    </div>
+        <h1>Snake Collector</h1>
+      </div>
+    </a>
     <nav>
       <ul>
         {% if user.is_authenticated %}
