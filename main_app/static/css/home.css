@@ -24,7 +24,11 @@ main > section {
 }
 
 .snake-container {
-  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
 }
 
 .login {
